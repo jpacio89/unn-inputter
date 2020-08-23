@@ -1,4 +1,4 @@
-package com.unn.datacenter.models;
+package com.unn.inputter.models;
 
 public class StandardResponse {
     private StatusResponse status;

@@ -1,4 +1,4 @@
-package com.unn.datacenter.utils;
+package com.unn.inputter.utils;
 
 import java.util.*;
 

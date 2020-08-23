@@ -1,9 +1,6 @@
-package com.unn.datacenter;
+package com.unn.inputter;
 
-import com.unn.datacenter.service.DataController;
-import org.postgresql.Driver;
-import retrofit2.GsonConverterFactory;
-import retrofit2.Retrofit;
+import com.unn.inputter.service.DataController;
 
 import java.sql.*;
 

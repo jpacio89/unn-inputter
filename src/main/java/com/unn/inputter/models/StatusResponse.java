@@ -1,4 +1,4 @@
-package com.unn.datacenter.models;
+package com.unn.inputter.models;
 
 public enum StatusResponse {
     SUCCESS ("Success"),
