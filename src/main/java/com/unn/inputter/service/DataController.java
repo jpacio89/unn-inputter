@@ -1,10 +1,10 @@
 package com.unn.inputter.service;
 
 import com.google.gson.Gson;
+import com.unn.inputter.Config;
 import com.unn.inputter.models.*;
 
-import static spark.Spark.get;
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 public class DataController {
     static final String SUCCESS = new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
@@ -16,6 +16,8 @@ public class DataController {
     public static void serve() {
         service = new DataService();
         service.init();
+
+        port(Config.INPUTTER_PORT);
 
         // Loads a specific openml dataset
         post("/dataset/load/openml/:datasetId", (request, response) -> {
