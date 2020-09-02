@@ -19,5 +19,6 @@ public interface DatacenterService {
         @Body DatasetDescriptor body
     );
 
-
+    @POST("/brain/reset")
+    Call<String> resetBrain();
 }
