@@ -1,11 +1,9 @@
 package com.unn.inputter.service;
 
 import com.unn.inputter.models.DatasetDescriptor;
-import com.unn.inputter.models.Thing;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -16,7 +14,7 @@ public interface DatacenterService {
         @Body RequestBody body
     );
 
-    @POST("dataset/register")
+    @POST("/dataset/register")
     Call<String> registerAgent(
         @Body DatasetDescriptor body
     );

@@ -3,10 +3,8 @@ package com.unn.inputter.service;
 import com.unn.inputter.Config;
 import com.unn.inputter.models.DatasetDescriptor;
 import com.unn.inputter.models.Header;
-import com.unn.inputter.models.Thing;
 import com.unn.inputter.plugins.openml.OpenmlDatasetProvider;
 import com.unn.inputter.plugins.openml.OpenmlLocator;
-import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
@@ -51,11 +49,17 @@ public class DataService {
             @Override
             public void run() {
                 RequestBody body = RequestBody.create(MediaType.parse("text/plain"), csv);
-                service.registerAgent(new DatasetDescriptor()
-                    .withNamespace(namespace)
-                    .withHeader(new Header().withNames(vals[0].split(","))));
-                Call<String> call = service.storeDataset(namespace, body);
                 try {
+                    // service.registerAgent(new Thing()).execute();
+                    DatasetDescriptor descriptor = new DatasetDescriptor()
+                            .withNamespace(namespace)
+                            .withHeader(new Header().withNames(vals[0].split(",")));
+                    service.registerAgent(descriptor).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    Call<String> call = service.storeDataset(namespace, body);
                     call.execute();
                 } catch (IOException e) {
                     e.printStackTrace();

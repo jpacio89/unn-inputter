@@ -12,10 +12,10 @@ public class DatasetDescriptor {
     String[] upstreamDependencies;
     String[] downstreamDependencies;
     int layer;
-    //Header header;
+    Header header;
 
     public DatasetDescriptor() {
-  //      this.header = new Header();
+        this.header = new Header();
     }
 
     public String[] getUpstreamDependencies() {
@@ -82,12 +82,44 @@ public class DatasetDescriptor {
     }
 
     public Header getHeader() {
-        return null;
+        return this.header;
     }
 
     public DatasetDescriptor withHeader(Header header) {
-      // this.header = header;
+        this.header = header;
         return this;
+    }
+
+    public void setUniques(String[] uniques) {
+        this.uniques = uniques;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setNamespace(String namespace) {
+        this.namespace = namespace;
+    }
+
+    public void setUpstreamDependencies(String[] upstreamDependencies) {
+        this.upstreamDependencies = upstreamDependencies;
+    }
+
+    public void setDownstreamDependencies(String[] downstreamDependencies) {
+        this.downstreamDependencies = downstreamDependencies;
+    }
+
+    public void setLayer(int layer) {
+        this.layer = layer;
+    }
+
+    public void setHeader(Header header) {
+        this.header = header;
     }
 
     public boolean isAnnotated() {
