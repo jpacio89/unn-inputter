@@ -18,6 +18,7 @@ public class DataController {
         service.init();
 
         port(Config.INPUTTER_PORT);
+        before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
         // Loads a specific openml dataset
         post("/dataset/load/openml/:datasetId", (request, response) -> {
