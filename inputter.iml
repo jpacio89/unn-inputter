@@ -60,5 +60,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.1" level="project" />
     <orderEntry type="module" module-name="common" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:converter-scalars:2.9.0" level="project" />
   </component>
 </module>

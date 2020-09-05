@@ -13,7 +13,6 @@ public class DataController {
 
     public DataController() { }
 
-
     public static void serve() {
         service = new DataService();
         service.init();

@@ -1,6 +1,6 @@
 package com.unn.inputter.plugins.openml;
 
-// import com.unn.inputter.models.DatasetLocator;
+// import com.unn.common.dataset.DatasetLocator;
 
 public class OpenmlLocator /*extends DatasetLocator*/ {
     int datasetId;

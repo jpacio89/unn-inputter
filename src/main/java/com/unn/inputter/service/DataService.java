@@ -1,14 +1,15 @@
 package com.unn.inputter.service;
 
+import com.unn.common.dataset.DatasetDescriptor;
+import com.unn.common.dataset.Header;
+import com.unn.common.globals.NetworkConfig;
+import com.unn.common.server.services.DatacenterService;
+import com.unn.common.utils.Utils;
 import com.unn.inputter.Config;
-import com.unn.inputter.models.DatasetDescriptor;
-import com.unn.inputter.models.Header;
 import com.unn.inputter.plugins.openml.OpenmlDatasetProvider;
 import com.unn.inputter.plugins.openml.OpenmlLocator;
 import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -23,16 +24,7 @@ public class DataService {
     public DataService() { }
 
     public void init() {
-        String url = String.format("%s://%s:%s",
-            Config.DATACENTER_PROTOCOL,
-            Config.DATACENTER_HOST,
-            Config.DATACENTER_PORT);
-        this.retrofit = new Retrofit.Builder()
-            .baseUrl(url)
-            .addConverterFactory(JacksonConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
-        this.service = retrofit.create(DatacenterService.class);
+        this.service = Utils.getDatacenter(true);
     }
 
     public void loadOpenML(String datasetId) {
