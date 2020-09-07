@@ -1,17 +1,18 @@
-package com.unn.inputter.service;
+package com.unn.inputter;
 
 import com.google.gson.Gson;
 import com.unn.common.server.StandardResponse;
 import com.unn.common.server.StatusResponse;
 import com.unn.inputter.Config;
+import com.unn.inputter.service.DataService;
 
 import static spark.Spark.*;
 
-public class DataController {
+public class Server {
     static final String SUCCESS = new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
     static DataService service;
 
-    public DataController() { }
+    public Server() { }
 
     public static void serve() {
         service = new DataService();
