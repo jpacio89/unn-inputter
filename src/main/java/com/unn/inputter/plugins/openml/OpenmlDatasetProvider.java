@@ -24,13 +24,17 @@ public class OpenmlDatasetProvider /* extends DatasetProvider */ {
         return this;
     }
 
+    private String escape(String csv) {
+        return csv.replace(".", "_").replace("\"", "");
+    }
+
     public String load() {
         try {
             DataSetDescription data = this.client.dataGet(locator.getDatasetId());
             File csvFile = this.client.datasetGetCsv(data);
             byte[] encoded = Files.readAllBytes(Paths.get(csvFile.getAbsolutePath()));
             String csv =  new String(encoded, StandardCharsets.UTF_8);
-            return csv;
+            return escape(csv);
         }
         catch (Exception e) {
             e.printStackTrace();

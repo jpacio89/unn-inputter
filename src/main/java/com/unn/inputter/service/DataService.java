@@ -3,6 +3,7 @@ package com.unn.inputter.service;
 import com.unn.common.dataset.DatasetDescriptor;
 import com.unn.common.dataset.Header;
 import com.unn.common.globals.NetworkConfig;
+import com.unn.common.server.NetworkUtils;
 import com.unn.common.server.services.DatacenterService;
 import com.unn.common.utils.Utils;
 import com.unn.inputter.Config;
@@ -38,38 +39,14 @@ public class DataService {
     void processDataset(String namespace, String csv) {
         new Thread(() -> {
             this.resetBrain();
-            this.registerAgent(namespace, csv);
-            this.uploadDataset(namespace, csv);
+            NetworkUtils.registerAgent(namespace, csv);
+            NetworkUtils.uploadDataset(namespace, csv);
         }).start();
     }
 
     void resetBrain() {
         try {
             service.resetBrain().execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    void registerAgent(String namespace, String csv) {
-        try {
-            String[] rows = csv.split("\n");
-            Header header = new Header()
-                .withNames(rows[0].split(","));
-            DatasetDescriptor descriptor = new DatasetDescriptor()
-                .withNamespace(namespace)
-                .withHeader(header);
-            service.registerAgent(descriptor).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    void uploadDataset(String namespace, String csv) {
-        try {
-            RequestBody body = RequestBody.create(MediaType.parse("text/plain"), csv);
-            Call<String> call = service.storeDataset(namespace, body);
-            call.execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
