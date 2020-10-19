@@ -25,7 +25,7 @@ public class OpenmlDatasetProvider /* extends DatasetProvider */ {
     }
 
     private String escape(String csv) {
-        return csv.replace(".", "_").replace("\"", "");
+        return csv/*.replace(".", "_")*/.replace("\"", "");
     }
 
     public String load() {
