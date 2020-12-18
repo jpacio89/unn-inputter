@@ -25,7 +25,7 @@ public class DataService {
     public DataService() { }
 
     public void init() {
-        this.service = Utils.getDatacenter(true);
+        this.service = Utils.getDatacenter();
     }
 
     public void loadOpenML(String datasetId) {
